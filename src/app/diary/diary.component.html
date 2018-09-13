@@ -1,0 +1,15 @@
+
+
+<div class="container">
+    <div class="row">
+        <app-diary-form (addDiary)="addNewDiary($event)"></app-diary-form>
+    </div>
+</div>
+<ul>
+    <div *ngFor='let diary of diary; let i = index'>
+        <li  id="{{i}}" appHighlight> {{diary.name}} added on {{diary.addedDate|date}}</li>
+        <button class="btn btn-primary"  (click)='toogleDetails(i)'>Thoughts</button>
+
+        <app-diary-details *ngIf="diary.showDescription" [diary]='diary' (isComplete)= 'deleteGoal($event,i)'></app-diary-details>
+    </div>
+</ul>
